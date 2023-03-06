@@ -11,3 +11,9 @@ export class NotNullTitle extends CustomError{
         super(400, "Favor preencha o campo titulo.")
     }
 }
+
+export class NoProjects extends CustomError{
+    constructor(){
+        super(404, "Nenhum projeto foi encontrado")
+    }
+}

@@ -1,3 +1,5 @@
+import { CustomError } from "../error/CustomError";
+import { NoProjects } from "../error/ProjectError";
 import { Projects } from "../model/projects/projects";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -13,6 +15,22 @@ export class ProjectDatabase extends BaseDatabase{
 
         }catch(erro:any){
             throw new Error(erro.message)
+        }
+    }
+
+    getAllProject = async() =>{
+        try{
+            const queryResult = await ProjectDatabase.connection("Projects")
+            .select("*")
+            .orderBy('title', 'asc')
+
+            if(queryResult.length <1){
+                throw new NoProjects()
+            }
+
+            return queryResult
+        }catch(error: any){
+            throw new CustomError(error.statusCode, error.message)
         }
     }
 }

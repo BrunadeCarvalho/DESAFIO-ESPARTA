@@ -22,4 +22,23 @@ export class TasksController{
             res.status(400).send(error.message || error.sqlMessage)
         }
     }
+
+     public editTasks = async(req: Request, res: Response)=>{
+        try{
+            const input: Tasks={
+                id: req.params.id,
+                description: req.body.description,
+                deadline: req.body.deadline,
+                status: req.body.status,
+                id_projects: req.body.id_projects
+            };
+
+            const tasksBusiness = new TasksBusiness()
+            await tasksBusiness.editTasks(input)
+
+            res.status(201).send({message: "Tarefa editada com sucesso!"})
+        }catch(error:any){
+            res.status(400).send(error.message)
+        }
+    }
 }

@@ -24,3 +24,9 @@ export class NotNullIdProjects extends CustomError{
     }
 }
 
+export class NotNullId extends CustomError{
+    constructor(){
+        super(400, "Favor informar o id da tarefa que deseja editar.")
+    }
+}
+

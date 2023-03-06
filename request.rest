@@ -20,3 +20,14 @@ Content-Type: application/json
     "description": "testando projeto 2"
 }
 
+###
+POST http://localhost:3003/tasks/create
+Content-Type: application/json
+
+{
+    "description": "tarefa numero 1",
+    "deadline":"2023-06-26",
+    "status":"ativo",
+    "id_projects":"d5f8c626-04cb-4633-89da-b997e7dd9f63"
+}
+

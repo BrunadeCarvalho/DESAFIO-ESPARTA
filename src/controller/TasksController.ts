@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { TasksBusiness } from "../business/TasksBusiness";
+import { TasksDatabase } from "../data/TasksDatabase";
 import { Tasks } from "../model/tasks/tasks"
 import { TasksInputDTO } from "../model/tasks/tasksInputDTO";
 
@@ -37,6 +38,19 @@ export class TasksController{
             await tasksBusiness.editTasks(input)
 
             res.status(201).send({message: "Tarefa editada com sucesso!"})
+        }catch(error:any){
+            res.status(400).send(error.message)
+        }
+    }
+
+    public deleteTasks = async(req: Request, res: Response)=>{
+        try{
+            const {id}= req.params
+
+            const tasksDatabase = new TasksDatabase()
+            const deleteTasks = await tasksDatabase.deleteTasks(id)
+
+            res.status(200).send(deleteTasks)
         }catch(error:any){
             res.status(400).send(error.message)
         }

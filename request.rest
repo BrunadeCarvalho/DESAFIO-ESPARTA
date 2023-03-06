@@ -25,10 +25,10 @@ POST http://localhost:3003/tasks/create
 Content-Type: application/json
 
 {
-    "description": "tarefa numero 1",
-    "deadline":"2023-06-26",
+    "description": "tarefa numero 2",
+    "deadline":"2023-03-26",
     "status":"ativo",
-    "id_projects":"d5f8c626-04cb-4633-89da-b997e7dd9f63"
+    "id_projects":"a568fe10-9a7b-46f8-9ccf-42ad82f9d38f"
 }
 ###
 PUT http://localhost:3003/tasks/edit/e09045d6-aac0-4036-89b5-29e527e2b1ce
@@ -41,3 +41,6 @@ Content-Type: application/json
     "id_projects":"d5f8c626-04cb-4633-89da-b997e7dd9f63"
 }
 
+###
+
+DELETE http://localhost:3003/tasks/delete/b3b37219-3ba7-479d-ac09-9831064715db

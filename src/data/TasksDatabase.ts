@@ -35,4 +35,19 @@ export class TasksDatabase extends BaseDatabase{
 
         }
     }
+
+    deleteTasks = async(id:String)=>{
+        try{
+            const queryResult = await TasksDatabase.connection("Tasks")
+            .delete()
+            .where({id})
+
+            if(queryResult){
+                return "Tarefa deletada com sucesso"
+            }
+                return "Tarefa não localizada, verifique se o id está correto."
+        }catch(error:any){
+            throw new CustomError(error.status, error.message)
+        }
+    }
 }

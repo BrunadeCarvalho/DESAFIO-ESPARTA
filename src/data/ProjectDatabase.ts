@@ -64,4 +64,19 @@ export class ProjectDatabase extends BaseDatabase{
 
         }
     }
+
+    deleteProject = async(id:String)=>{
+        try{
+            const queryResult = await ProjectDatabase.connection("Projects")
+            .delete()
+            .where({id})
+
+            if(queryResult){
+                return "Projeto deletada com sucesso"
+            }
+                return "Projeto não localizada, verifique se o id está correto."
+        }catch(error:any){
+            throw new CustomError(error.status, error.message)
+        }
+    }
 }

@@ -2,52 +2,55 @@ POST http://localhost:3003/project/create
 Content-Type: application/json
 
 {
-    "title": "Projeto 5",
-    "description": "testando projeto 5"
+    "title": "Projeto 3",
+    "description": "testando projeto 3"
 }
 
 ###
 GET http://localhost:3003/project
 
 ###
-GET http://localhost:3003/project/d5f8c626-04cb-4633-89da-b997e7dd9f63
+GET http://localhost:3003/project/0743b551-1e30-44cd-ab31-cd80f7ba7c89
 
 ###
-PUT http://localhost:3003/project/edit/d5f8c626-04cb-4633-89da-b997e7dd9f63
+PUT http://localhost:3003/project/edit/0743b551-1e30-44cd-ab31-cd80f7ba7c89
 Content-Type: application/json
 
 {
-    "title": "O novo Projeto 2",
-    "description": "testando projeto 2"
+    "title": "O novo Projeto 3",
+    "description": "testando projeto 3"
 }
+
+###
+DELETE http://localhost:3003/project/delete/0743b551-1e30-44cd-ab31-cd80f7ba7c89
 
 ###
 POST http://localhost:3003/tasks/create
 Content-Type: application/json
 
 {
-    "description": "Tarefa numero 21",
+    "description": "Tarefa numero 22",
     "deadline":"2023-10-11",
     "status":"teste",
-    "id_projects":"53150768-b479-41cc-96ee-5af5f7d00eb1"
+    "id_projects":"0743b551-1e30-44cd-ab31-cd80f7ba7c89"
 }
 
 ###
-GET http://localhost:3003/tasks/a568fe10-9a7b-46f8-9ccf-42ad82f9d38f
+GET http://localhost:3003/tasks/0743b551-1e30-44cd-ab31-cd80f7ba7c89
 
 ###
-PUT http://localhost:3003/tasks/edit/e09045d6-aac0-4036-89b5-29e527e2b1ce
+PUT http://localhost:3003/tasks/edit/07c0ffa6-2414-4c75-b5b4-d536e7d37774
 Content-Type: application/json
 
 {
     "description": "tarefa numero 01",
     "deadline":"2023-06-20",
     "status":"ativo",
-    "id_projects":"d5f8c626-04cb-4633-89da-b997e7dd9f63"
+    "id_projects":"0743b551-1e30-44cd-ab31-cd80f7ba7c8"
 }
 
 ###
-DELETE http://localhost:3003/tasks/delete/b3b37219-3ba7-479d-ac09-9831064715db
+DELETE http://localhost:3003/tasks/delete/07c0ffa6-2414-4c75-b5b4-d536e7d37774
 
 
 

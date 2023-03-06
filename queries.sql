@@ -1,10 +1,10 @@
-CREATE TABLE Projects_Esparta(
+CREATE TABLE Projects(
     id VARCHAR(255) PRIMARY KEY,
     title VARCHAR(255) NOT NULL, 
     description TEXT NOT NULL
 );
 
-CREATE TABLE Tasks_Esparta(
+CREATE TABLE Tasks(
     id VARCHAR(255) PRIMARY KEY,
     description TEXT NOT NULL,
     deadline DATE NOT NULL,

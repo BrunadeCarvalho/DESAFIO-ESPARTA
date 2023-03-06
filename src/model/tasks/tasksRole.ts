@@ -1,6 +1,6 @@
 export enum TasksRole{
     ANDAMENTO = "ANDAMENTO",
     PROGRESSO = "PROGRESSO",
-    CONCLUIDO = "CONCLUIDO"
+    CONCLUÍDO = "CONCLUÍDO"
 
 }

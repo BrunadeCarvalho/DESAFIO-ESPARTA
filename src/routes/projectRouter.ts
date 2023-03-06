@@ -6,3 +6,4 @@ const projectController = new ProjectController();
 export const projectRouter = express.Router();
 
 projectRouter.post("/create", projectController.creteProject)
+projectRouter.get("", projectController.getAllProject)

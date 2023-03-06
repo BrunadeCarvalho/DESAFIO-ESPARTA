@@ -9,7 +9,7 @@ export class ProjectDatabase extends BaseDatabase{
                 id: project.id,
                 title: project.title,
                 description: project.description
-            }).into("Projects_Esparta")
+            }).into("Projects")
 
         }catch(erro:any){
             throw new Error(erro.message)

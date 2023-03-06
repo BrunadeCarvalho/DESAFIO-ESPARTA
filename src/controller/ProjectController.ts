@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ProjectBusiness } from "../business/ProjectBusiness";
 import { projectInputDTO } from "../model/projects/projectInputDTO";
 
 export class ProjectController{
@@ -9,6 +10,9 @@ export class ProjectController{
                 description: req.body.description
             };
 
+            const projectBusiness = new ProjectBusiness()
+            await projectBusiness.createProject(input)
+            
             res.status(201).send(input)
 
         }catch(error:any){

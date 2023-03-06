@@ -42,9 +42,10 @@ export class TasksDatabase extends BaseDatabase{
             .delete()
             .where({id})
 
-            if(queryResult <1){
-                return "Usuário não encontrado, verifique se o id está correto"
+            if(queryResult){
+                return "Tarefa deletada com sucesso"
             }
+                return "Tarefa não localizada, verifique se o id está correto."
         }catch(error:any){
             throw new CustomError(error.status, error.message)
         }

@@ -44,3 +44,8 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3003/tasks/delete/b3b37219-3ba7-479d-ac09-9831064715db
+
+###
+GET http://localhost:3003/tasks/a568fe10-9a7b-46f8-9ccf-42ad82f9d38f
+
+

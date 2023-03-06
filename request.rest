@@ -41,3 +41,6 @@ Content-Type: application/json
     "id_projects":"d5f8c626-04cb-4633-89da-b997e7dd9f63"
 }
 
+###
+
+DELETE http://localhost:3003/tasks/delete/e09045d6-aac0-4036-89b5-29e527e2b1ce

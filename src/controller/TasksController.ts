@@ -23,7 +23,7 @@ export class TasksController{
         }
     }
 
-     editTasks = async(req: Request, res: Response)=>{
+     public editTasks = async(req: Request, res: Response)=>{
         try{
             const input: Tasks={
                 id: req.params.id,
@@ -34,7 +34,7 @@ export class TasksController{
             };
 
             const tasksBusiness = new TasksBusiness()
-            await tasksBusiness.createTasks(input)
+            await tasksBusiness.editTasks(input)
 
             res.status(201).send({message: "Tarefa editada com sucesso!"})
         }catch(error:any){

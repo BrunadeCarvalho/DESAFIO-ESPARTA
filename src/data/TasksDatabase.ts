@@ -1,6 +1,7 @@
 import { CustomError } from "../error/CustomError";
 import { Tasks } from "../model/tasks/tasks";
 import { BaseDatabase } from "./BaseDatabase";
+import { ProjectNotFound } from "../error/ProjectError";
 
 export class TasksDatabase extends BaseDatabase{
     createTasks =  async(tasks: Tasks)=>{
@@ -48,6 +49,27 @@ export class TasksDatabase extends BaseDatabase{
                 return "Tarefa não localizada, verifique se o id está correto."
         }catch(error:any){
             throw new CustomError(error.status, error.message)
+        }
+    }
+
+    getTasks = async(id:string)=>{
+        try{
+
+            const queryResult = await TasksDatabase.connection.raw(
+                `SELECT t.id, t.description, t.deadline, t.status 
+                from Tasks AS t 
+                inner join Projects p on p.id = t.id_projects 
+                WHERE p.id = "${id}"`
+            )
+
+            if(queryResult.length <1){
+                throw new ProjectNotFound()
+            }
+
+            return queryResult
+
+        }catch(error:any){
+
         }
     }
 }

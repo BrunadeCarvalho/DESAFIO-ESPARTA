@@ -55,4 +55,18 @@ export class TasksController{
             res.status(400).send(error.message)
         }
     }
+
+    public getTasks = async(req: Request, res: Response)=>{
+        try{
+
+            const {id} = req.params
+
+            const tasksDatabase = new TasksDatabase()
+            const tasks = await tasksDatabase.getTasks(id)
+
+            res.status(200).send(tasks[0])
+        }catch(error:any){
+            res.status(400).send(error.message)
+        }
+    }
 }

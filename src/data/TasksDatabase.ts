@@ -35,4 +35,18 @@ export class TasksDatabase extends BaseDatabase{
 
         }
     }
+
+    deleteTasks = async(id:String)=>{
+        try{
+            const queryResult = await TasksDatabase.connection("Tasks")
+            .delete()
+            .where({id})
+
+            if(queryResult <1){
+                return "Usuário não encontrado, verifique se o id está correto"
+            }
+        }catch(error:any){
+            throw new CustomError(error.status, error.message)
+        }
+    }
 }

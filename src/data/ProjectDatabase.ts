@@ -49,4 +49,19 @@ export class ProjectDatabase extends BaseDatabase{
             throw new CustomError(error.statusCode, error.message)
         }
     }
+
+    editProject = async(project: Projects)=>{
+        try{
+            await ProjectDatabase.connection
+            .update({
+                title: project.title,
+                description: project.description
+            })
+            .where({id: project.id})
+            .into("Projects");
+        }catch(erro:any){
+            throw new CustomError(400, "Não foi possivel realizar as modificações.")
+
+        }
+    }
 }

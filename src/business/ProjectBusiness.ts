@@ -30,4 +30,30 @@ export class ProjectBusiness{
             throw new Error(error.message)
         }
     }
+
+    editProject = async(input: Projects)=>{
+        try{
+            const {title, description, id} = input
+
+            if(!title){
+                throw new NotNullTitle()
+            }else if(!description){
+                throw new NotNullDescription()
+            }else if(!id){
+                throw new Error("Insira o id")
+            }
+
+            const edit: Projects ={
+                id,
+                title,
+                description
+            }
+
+            const projectDatabase = new ProjectDatabase()
+            await projectDatabase.editProject(edit)
+
+        }catch(error:any){
+            throw new Error(error.message)
+        }
+    }
 }

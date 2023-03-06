@@ -65,10 +65,10 @@ export class ProjectDatabase extends BaseDatabase{
         }
     }
 
-    deleteTasks = async(id:String)=>{
+    deleteProject = async(id:String)=>{
         try{
-            const queryResult = await ProjectDatabase.connection("Project")
-            .delete('CASCADE')
+            const queryResult = await ProjectDatabase.connection("Projects")
+            .delete()
             .where({id})
 
             if(queryResult){

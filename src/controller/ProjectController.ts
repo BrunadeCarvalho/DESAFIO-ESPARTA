@@ -63,4 +63,17 @@ export class ProjectController{
             res.status(400).send(error.message)
         }
     }
+
+    public deleteProject = async(req: Request, res: Response)=>{
+        try{
+            const {id}= req.params
+
+            const projectDatabase = new ProjectDatabase()
+            const deleteProject = await projectDatabase.deleteProject(id)
+
+            res.status(200).send(deleteProject)
+        }catch(error:any){
+            res.status(400).send(error.message)
+        }
+    }
 }

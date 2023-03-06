@@ -12,7 +12,7 @@ export class TasksDatabase extends BaseDatabase{
                 description: tasks.description,
                 deadline: tasks.deadline,
                 status: tasks.status,
-                id_projects: tasks.id_projects
+                id_project: tasks.id_project
             }).into("Tasks")
 
         }catch(erro:any){
@@ -27,7 +27,7 @@ export class TasksDatabase extends BaseDatabase{
                 description: tasks.description,
                 deadline: tasks.deadline,
                 status: tasks.status,
-                id_projects: tasks.id_projects
+                id_project: tasks.id_project
             })
             .where({id: tasks.id})
             .into("Tasks");
@@ -58,7 +58,7 @@ export class TasksDatabase extends BaseDatabase{
             const queryResult = await TasksDatabase.connection.raw(
                 `SELECT  p.title, t.id, t.description, t.deadline, t.status 
                 from Tasks AS t 
-                inner join Projects p on p.id = t.id_projects 
+                inner join Projects p on p.id = t.id_project 
                 WHERE p.id = "${id}"`
             )
 

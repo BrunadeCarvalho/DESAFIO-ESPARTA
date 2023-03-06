@@ -11,7 +11,7 @@ export class TasksController{
                 description: req.body.description,
                 deadline: req.body.deadline,
                 status: req.body.status,
-                id_projects: req.body.id_projects
+                id_project: req.body.id_project
             };
 
             const tasksBusiness = new TasksBusiness()
@@ -31,7 +31,7 @@ export class TasksController{
                 description: req.body.description,
                 deadline: req.body.deadline,
                 status: req.body.status,
-                id_projects: req.body.id_projects
+                id_project: req.body.id_project
             };
 
             const tasksBusiness = new TasksBusiness()

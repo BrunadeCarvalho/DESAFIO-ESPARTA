@@ -9,7 +9,7 @@ import { generateId } from "../services/idGenerator";
 export class TasksBusiness{
     createTasks = async(input: TasksInputDTO)=>{
         try{
-            const {description, deadline, status, id_projects} = input;
+            const {description, deadline, status, id_project} = input;
 
             if(!deadline){
                 throw new NotNullDeadline()
@@ -17,7 +17,7 @@ export class TasksBusiness{
                 throw new NotNullDescription()
             }else if(!status){
                 throw new NotNullStatus()
-            }else if (!id_projects){
+            }else if (!id_project){
                 throw new NotNullIdProjects()
             }
 
@@ -34,7 +34,7 @@ export class TasksBusiness{
                 description,
                 deadline,
                 status,
-                id_projects
+                id_project
             }
 
             const tasksDatabase = new TasksDatabase()
@@ -47,7 +47,7 @@ export class TasksBusiness{
 
     editTasks = async(input: Tasks)=>{
         try{
-            const {description, deadline, status, id_projects, id} = input;
+            const {description, deadline, status, id_project, id} = input;
 
             if(!deadline){
                 throw new NotNullDeadline()
@@ -55,7 +55,7 @@ export class TasksBusiness{
                 throw new NotNullDescription()
             }else if(!status){
                 throw new NotNullStatus()
-            }else if (!id_projects){
+            }else if (!id_project){
                 throw new NotNullIdProjects()
             }else if(!id){
                 throw new NotNullId()
@@ -66,7 +66,7 @@ export class TasksBusiness{
                 description,
                 deadline,
                 status,
-                id_projects
+                id_project
 
             }
 

@@ -5,6 +5,7 @@ Content-Type: application/json
     "title": "Projeto 5",
     "description": "testando projeto 5"
 }
+
 ###
 GET http://localhost:3003/project
 
@@ -30,6 +31,10 @@ Content-Type: application/json
     "status":"teste",
     "id_projects":"53150768-b479-41cc-96ee-5af5f7d00eb1"
 }
+
+###
+GET http://localhost:3003/tasks/a568fe10-9a7b-46f8-9ccf-42ad82f9d38f
+
 ###
 PUT http://localhost:3003/tasks/edit/e09045d6-aac0-4036-89b5-29e527e2b1ce
 Content-Type: application/json
@@ -42,10 +47,7 @@ Content-Type: application/json
 }
 
 ###
-
 DELETE http://localhost:3003/tasks/delete/b3b37219-3ba7-479d-ac09-9831064715db
 
-###
-GET http://localhost:3003/tasks/a568fe10-9a7b-46f8-9ccf-42ad82f9d38f
 
 

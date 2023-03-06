@@ -58,7 +58,7 @@ export class ProjectController{
             const projectBusiness = new ProjectBusiness()
             await projectBusiness.editProject(input)
 
-            res.status(201).send({message: "Projeto editado"})
+            res.status(201).send({message: "Projeto editado com sucesso!"})
         }catch(error:any){
             res.status(400).send(error.message)
         }

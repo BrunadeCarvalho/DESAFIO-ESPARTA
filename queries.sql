@@ -9,7 +9,7 @@ CREATE TABLE Tasks(
     description TEXT NOT NULL,
     deadline DATE NOT NULL,
     status VARCHAR(255) NOT NULL,
-    id_projects VARCHAR(255) NOT NULL,
+    id_project VARCHAR(255) NOT NULL,
     FOREIGN KEY (id_projects) REFERENCES Projects(id) 
     ON DELETE CASCADE
     ON UPDATE CASCADE

@@ -1,6 +1,7 @@
 import { ProjectDatabase } from "../data/ProjectDatabase";
 import { NotNullDescription, NotNullTitle } from "../error/ProjectError";
 import { projectInputDTO } from "../model/projects/projectInputDTO";
+import { generateId } from "../services/idGenerator";
 
 export class ProjectBusiness{
     createProject = async(input: projectInputDTO)=>{
@@ -12,6 +13,9 @@ export class ProjectBusiness{
             }else if(!description){
                 throw new NotNullDescription()
             }
+
+            const generatedId: string = generateId()
+
 
 
         }catch(error:any){

@@ -22,7 +22,7 @@ export class TasksBusiness{
             }
 
             if(status.toUpperCase() != TasksRole.ANDAMENTO && 
-            status.toUpperCase() != TasksRole.PROGRESSO &&
+            status.toUpperCase() != TasksRole.TESTE &&
             status.toUpperCase() != TasksRole.CONCLUÍDO){
                 throw new InvalidStatus
             }

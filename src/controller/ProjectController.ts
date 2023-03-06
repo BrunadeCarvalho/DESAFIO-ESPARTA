@@ -32,4 +32,17 @@ export class ProjectController{
             throw new CustomError(error.statusCode, error.message)
         }
     }
+
+    public getProject = async(req: Request, res:Response)=>{
+        try{
+            const {id} = req.params
+
+            const projectDatabase = new ProjectDatabase()
+            const getProject = await projectDatabase.getProject(id)
+
+            res.status(200).send(getProject[0])
+        }catch(error: any){
+            throw new CustomError(error.statusCode, error.message)
+        }
+    }
 }

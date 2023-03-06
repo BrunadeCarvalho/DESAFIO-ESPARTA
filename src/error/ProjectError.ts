@@ -14,6 +14,12 @@ export class NotNullTitle extends CustomError{
 
 export class NoProjects extends CustomError{
     constructor(){
-        super(404, "Nenhum projeto foi encontrado")
+        super(404, "Nenhum projeto foi encontrado.")
+    }
+}
+
+export class ProjectNotFound extends CustomError{
+    constructor(){
+        super(404, "Projeto não localizado, verifique se o id está correto.")
     }
 }

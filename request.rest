@@ -7,3 +7,6 @@ Content-Type: application/json
 }
 ###
 GET http://localhost:3003/project
+
+###
+GET http://localhost:3003/project/d5f8c626-04cb-4633-89da-b997e7dd9f63

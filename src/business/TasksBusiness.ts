@@ -1,8 +1,9 @@
 import { TasksDatabase } from "../data/TasksDatabase";
 import { NotNullDescription } from "../error/ProjectError";
-import { NotNullDeadline, NotNullId, NotNullIdProjects, NotNullStatus } from "../error/TasksError";
+import { InvalidStatus, NotNullDeadline, NotNullId, NotNullIdProjects, NotNullStatus } from "../error/TasksError";
 import { Tasks } from "../model/tasks/tasks";
 import { TasksInputDTO } from "../model/tasks/tasksInputDTO";
+import { TasksRole } from "../model/tasks/tasksRole";
 import { generateId } from "../services/idGenerator";
 
 export class TasksBusiness{
@@ -20,6 +21,11 @@ export class TasksBusiness{
                 throw new NotNullIdProjects()
             }
 
+            if(status.toUpperCase() != TasksRole.ANDAMENTO && 
+            status.toUpperCase() != TasksRole.TESTE &&
+            status.toUpperCase() != TasksRole.CONCLUÍDO){
+                throw new InvalidStatus
+            }
 
             const generatedId: string = generateId()
 

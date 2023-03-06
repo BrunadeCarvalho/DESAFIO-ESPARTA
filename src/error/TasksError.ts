@@ -1,5 +1,11 @@
 import { CustomError } from "./CustomError";
 
+
+export class InvalidStatus extends CustomError{ 
+    constructor(){
+        super(400, "Status informado inválido, escolha se ele está em ANDAMENTO, PROGRESSO ou CONCLUÍDO.")
+    }
+}
 export class NotNullDeadline extends CustomError{
     constructor(){
         super(400, "Favor preencha o campo deadline.")

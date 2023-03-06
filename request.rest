@@ -25,10 +25,10 @@ POST http://localhost:3003/tasks/create
 Content-Type: application/json
 
 {
-    "description": "tarefa numero 2",
-    "deadline":"2023-03-26",
-    "status":"ativo",
-    "id_projects":"a568fe10-9a7b-46f8-9ccf-42ad82f9d38f"
+    "description": "Tarefa numero 21",
+    "deadline":"2023-10-11",
+    "status":"teste",
+    "id_projects":"53150768-b479-41cc-96ee-5af5f7d00eb1"
 }
 ###
 PUT http://localhost:3003/tasks/edit/e09045d6-aac0-4036-89b5-29e527e2b1ce

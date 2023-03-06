@@ -1,7 +1,9 @@
+import { TasksRole } from "./tasksRole"
+
 export type Tasks={
     id: string,
     description: string,
     deadline: Date,
-    status:string,
+    status: string,
     id_projects: string
 }

@@ -56,7 +56,7 @@ export class TasksDatabase extends BaseDatabase{
         try{
 
             const queryResult = await TasksDatabase.connection.raw(
-                `SELECT t.id, t.description, t.deadline, t.status 
+                `SELECT  p.title, t.id, t.description, t.deadline, t.status 
                 from Tasks AS t 
                 inner join Projects p on p.id = t.id_projects 
                 WHERE p.id = "${id}"`

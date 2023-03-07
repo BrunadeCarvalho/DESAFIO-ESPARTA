@@ -6,7 +6,7 @@ export class NotNullDescription extends CustomError{
     }
 }
 
-export class NotNullTitle extends CustomError{
+export class NotNullName extends CustomError{
     constructor(){
         super(400, "Favor preencha o campo titulo.")
     }

@@ -1,5 +1,5 @@
 import { ProjectDatabase } from "../data/ProjectDatabase";
-import { NotNullDescription, NotNullTitle } from "../error/ProjectError";
+import { NotNullDescription, NotNullName } from "../error/ProjectError";
 import { projectInputDTO } from "../model/projects/projectInputDTO";
 import { Projects } from "../model/projects/projects";
 import { generateId } from "../services/idGenerator";
@@ -7,10 +7,10 @@ import { generateId } from "../services/idGenerator";
 export class ProjectBusiness{
     createProject = async(input: projectInputDTO)=>{
         try{
-            const {title, description} = input;
+            const {name, description} = input;
 
-            if(!title){
-                throw new NotNullTitle()
+            if(!name){
+                throw new NotNullName()
             }else if(!description){
                 throw new NotNullDescription()
             }
@@ -19,7 +19,7 @@ export class ProjectBusiness{
 
             const project: Projects={
                 id: generatedId,
-                title,
+                name,
                 description
             }
 
@@ -33,10 +33,10 @@ export class ProjectBusiness{
 
     editProject = async(input: Projects)=>{
         try{
-            const {title, description, id} = input
+            const {name, description, id} = input
 
-            if(!title){
-                throw new NotNullTitle()
+            if(!name){
+                throw new NotNullName()
             }else if(!description){
                 throw new NotNullDescription()
             }else if(!id){
@@ -45,7 +45,7 @@ export class ProjectBusiness{
 
             const edit: Projects ={
                 id,
-                title,
+                name,
                 description
             }
 

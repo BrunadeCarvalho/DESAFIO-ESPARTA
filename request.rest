@@ -2,7 +2,7 @@ POST http://localhost:3003/project/create
 Content-Type: application/json
 
 {
-    "title": "Projeto 3",
+    "name": "Projeto 3",
     "description": "testando projeto 3"
 }
 
@@ -17,7 +17,7 @@ PUT http://localhost:3003/project/edit/0743b551-1e30-44cd-ab31-cd80f7ba7c89
 Content-Type: application/json
 
 {
-    "title": "O novo Projeto 3",
+    "name": "O novo Projeto 3",
     "description": "testando projeto 3"
 }
 

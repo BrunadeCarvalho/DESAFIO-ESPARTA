@@ -9,7 +9,7 @@ export class ProjectController{
     creteProject = async(req: Request, res: Response)=>{
         try{
             const input: projectInputDTO={
-                title: req.body.title,
+                name: req.body.name,
                 description: req.body.description
             };
 
@@ -51,7 +51,7 @@ export class ProjectController{
         try{
             const input: Projects={
                 id: req.params.id,
-                title: req.body.title,
+                name: req.body.name,
                 description: req.body.description
             };
 

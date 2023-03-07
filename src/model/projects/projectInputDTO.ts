@@ -1,4 +1,4 @@
 export type projectInputDTO={
-    title: string,
+    name: string,
     description: string
 }

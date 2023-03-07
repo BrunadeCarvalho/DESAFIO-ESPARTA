@@ -1,4 +1,4 @@
-<h2>Iniciando a aplicação: </h2>
+<h1 align="center"> Iniciando a aplicação: </h1>
 <ol>
     <li>
         <h2> Passos para rodar a aplicação: </h2>
@@ -22,19 +22,27 @@
     </li>
 </ol>
 
-<h2> Endpoints: </h2>
+<h1 align="center"> Endpoints: </h1>
+
+<h2> Projects: </h2>
 <ol>
     <li>
-        <h2> Projects: </h2>
-        <ol>
-            <li>Create new project</li>
-            <li>Get all project</li>
-            <li>Get project</li>
-            <li>Edit project</li>
-            <li>Delete project</li>
-            <li>Delete project</li>
-        </ol>
+        <p><strong>Create new project</p></strong>
     </li>
+    <p>Cria um novo projeto no banco de dados.</p>
+
+<div style="display: flex">
+<p><strong>URL:</strong></p> <img src="https://user-images.githubusercontent.com/102433664/223453699-7739a1d2-fd09-428b-90b2-b5c574a380b9.png" />
+<p><strong>BODY:</strong></p> <img src="https://user-images.githubusercontent.com/102433664/223526604-4699adbe-ba09-4251-b285-f6b294a9248b.png" />
+
+</div>
+
+
+<li>Get all project</li>
+<li>Get project</li>
+<li>Edit project</li>
+<li>Delete project</li>
+<li>Delete project</li>
 </ol>
 
 <h2><strong>Documentação:</stromg></h2>

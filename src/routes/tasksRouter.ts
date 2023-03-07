@@ -5,7 +5,7 @@ const tasksController = new TasksController()
 
 export const tasksRouter = express.Router()
 
-tasksRouter.post("/create", tasksController.createTasks)
-tasksRouter.put("/edit/:id", tasksController.editTasks)
-tasksRouter.delete("/delete/:id", tasksController.deleteTasks)
+tasksRouter.post("", tasksController.createTasks)
+tasksRouter.put("/:id", tasksController.editTasks)
+tasksRouter.delete("/:id", tasksController.deleteTasks)
 tasksRouter.get("/:id", tasksController.getTasks)

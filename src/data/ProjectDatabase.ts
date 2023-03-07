@@ -1,5 +1,6 @@
 import { CustomError } from "../error/CustomError";
-import { NoProjects, ProjectNotFound } from "../error/ProjectError";
+import { ProjectNotFound } from "../error/ProjectError";
+import { TaskNotFound } from "../error/TasksError";
 import { Projects } from "../model/projects/projects";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -9,12 +10,11 @@ export class ProjectDatabase extends BaseDatabase{
             await ProjectDatabase.connection
             .insert({
                 id: project.id,
-                title: project.title,
+                name: project.name,
                 description: project.description
             }).into("Projects")
-
-        }catch(erro:any){
-            throw new Error(erro.message)
+        }catch(error:any){
+            throw new Error(error.message)
         }
     }
 
@@ -22,15 +22,15 @@ export class ProjectDatabase extends BaseDatabase{
         try{
             const queryResult = await ProjectDatabase.connection("Projects")
             .select("*")
-            .orderBy('title', 'asc')
+            .orderBy('name', 'asc')
 
             if(queryResult.length <1){
-                throw new NoProjects()
+                throw new ProjectNotFound()
             }
 
             return queryResult
         }catch(error: any){
-            throw new CustomError(error.statusCode, error.message)
+            throw new Error(error.message)
         }
     }
 
@@ -46,21 +46,27 @@ export class ProjectDatabase extends BaseDatabase{
             return queryResult
 
         }catch(error:any){
-            throw new CustomError(error.statusCode, error.message)
+            throw new Error(error.message)
         }
     }
 
     editProject = async(project: Projects)=>{
         try{
-            await ProjectDatabase.connection
+            const result = await ProjectDatabase.connection
             .update({
-                title: project.title,
+                name: project.name,
                 description: project.description
             })
             .where({id: project.id})
             .into("Projects");
-        }catch(erro:any){
-            throw new CustomError(400, "Não foi possivel realizar as modificações.")
+
+            if(result == 0){
+                throw new ProjectNotFound()
+            }
+
+            return result
+        }catch(error:any){
+            throw new Error(error.message)
 
         }
     }
@@ -71,12 +77,13 @@ export class ProjectDatabase extends BaseDatabase{
             .delete()
             .where({id})
 
-            if(queryResult){
-                return "Projeto deletada com sucesso"
+            if(queryResult == 0){
+                throw new ProjectNotFound()
             }
-                return "Projeto não localizada, verifique se o id está correto."
+            return queryResult
+
         }catch(error:any){
-            throw new CustomError(error.status, error.message)
+            throw new Error(error.message)
         }
     }
 }

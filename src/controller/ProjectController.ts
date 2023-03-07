@@ -9,17 +9,17 @@ export class ProjectController{
     creteProject = async(req: Request, res: Response)=>{
         try{
             const input: projectInputDTO={
-                title: req.body.title,
+                name: req.body.name,
                 description: req.body.description
             };
 
             const projectBusiness = new ProjectBusiness()
-            await projectBusiness.createProject(input)
+            const response = await projectBusiness.createProject(input)
             
-            res.status(201).send(input)
+            res.status(201).send(response)
 
         }catch(error:any){
-            res.status(400).send(error.message || error.sqlMessage)
+            res.status(400).send({message: error.message || error.sqlMessage})
         }
     }
 
@@ -43,7 +43,8 @@ export class ProjectController{
 
             res.status(200).send(getProject[0])
         }catch(error: any){
-            throw new CustomError(error.statusCode, error.message)
+            console.log(error)
+            res.status(404).send({message: error.message})
         }
     }
 
@@ -51,29 +52,29 @@ export class ProjectController{
         try{
             const input: Projects={
                 id: req.params.id,
-                title: req.body.title,
+                name: req.body.name,
                 description: req.body.description
             };
 
             const projectBusiness = new ProjectBusiness()
-            await projectBusiness.editProject(input)
+            const response = await projectBusiness.editProject(input)
 
-            res.status(200).send({message: "Projeto editado com sucesso!"})
+            res.status(200).send(response)
         }catch(error:any){
-            res.status(400).send(error.message)
+            res.status(404).send({message: error.message})
         }
     }
 
     public deleteProject = async(req: Request, res: Response)=>{
         try{
-            const {id}= req.params
+            const {id} = req.params
 
             const projectDatabase = new ProjectDatabase()
-            const deleteProject = await projectDatabase.deleteProject(id)
+            await projectDatabase.deleteProject(id)
 
-            res.status(200).send(deleteProject)
+            res.status(204).send()
         }catch(error:any){
-            res.status(400).send(error.message)
+            res.status(404).send({message: error.message})
         }
     }
 }

@@ -1,5 +1,5 @@
 export type Projects={
     id: string,
-    title: string,
+    name: string,
     description: string
 }

@@ -1,7 +1,7 @@
-import { CustomError } from "../error/CustomError";
 import { Tasks } from "../model/tasks/tasks";
 import { BaseDatabase } from "./BaseDatabase";
 import { ProjectNotFound } from "../error/ProjectError";
+import { TaskNotFound } from "../error/TasksError";
 
 export class TasksDatabase extends BaseDatabase{
     createTasks =  async(tasks: Tasks)=>{
@@ -12,27 +12,34 @@ export class TasksDatabase extends BaseDatabase{
                 description: tasks.description,
                 deadline: tasks.deadline,
                 status: tasks.status,
-                id_projects: tasks.id_projects
+                id_project: tasks.id_project
             }).into("Tasks")
 
-        }catch(erro:any){
-            throw new Error(erro.message)
+        }catch(error:any){
+            if(error.errno == 1452){
+                throw new TaskNotFound
+            }
+        
+            throw new Error(error.message)
         }
     }
 
     editTasks = async(tasks: Tasks)=>{
         try{
-            await TasksDatabase.connection
+            const result = await TasksDatabase.connection
             .update({
                 description: tasks.description,
                 deadline: tasks.deadline,
-                status: tasks.status,
-                id_projects: tasks.id_projects
+                status: tasks.status
             })
             .where({id: tasks.id})
             .into("Tasks");
-        }catch(erro:any){
-            throw new CustomError(400, "Não foi possivel realizar as modificações.")
+
+            if(result == 0){
+                throw new TaskNotFound()
+            }
+        }catch(error:any){
+            throw new Error(error.message)
 
         }
     }
@@ -43,12 +50,13 @@ export class TasksDatabase extends BaseDatabase{
             .delete()
             .where({id})
 
-            if(queryResult){
-                return "Tarefa deletada com sucesso"
+            if(queryResult == 0){
+                throw new TaskNotFound()
             }
-                return "Tarefa não localizada, verifique se o id está correto."
+            
+            return queryResult
         }catch(error:any){
-            throw new CustomError(error.status, error.message)
+            throw new Error(error.message)
         }
     }
 
@@ -56,19 +64,20 @@ export class TasksDatabase extends BaseDatabase{
         try{
 
             const queryResult = await TasksDatabase.connection.raw(
-                `SELECT  p.title, t.id, t.description, t.deadline, t.status 
+                `SELECT  p.name, t.id, t.description, t.deadline, t.status 
                 from Tasks AS t 
-                inner join Projects p on p.id = t.id_projects 
+                inner join Projects p on p.id = t.id_project 
                 WHERE p.id = "${id}"`
             )
 
-            if(queryResult.length <1){
+            if(queryResult[0].length <1){
                 throw new ProjectNotFound()
             }
 
-            return queryResult
+            return queryResult[0]
 
         }catch(error:any){
+            throw new Error(error.message)
 
         }
     }

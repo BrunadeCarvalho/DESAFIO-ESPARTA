@@ -1,38 +1,36 @@
 import { CustomError } from "./CustomError";
 
-
 export class InvalidStatus extends CustomError{ 
     constructor(){
-        super(400, "Status informado inválido, escolha se ele está em ANDAMENTO, PROGRESSO ou CONCLUÍDO.")
+        super(400, "invalid Status")
     }
 }
 export class NotNullDeadline extends CustomError{
     constructor(){
-        super(400, "Favor preencha o campo deadline.")
+        super(400, "deadline is required")
     }
 }
 
 export class NotNullDescription extends CustomError{
     constructor(){
-        super(400, "Favor preencha o campo descrição.")
+        super(400, "description is required.")
     }
 }
 
 export class NotNullStatus extends CustomError{
     constructor(){
-        super(400, "Favor preencha o campo status.")
+        super(400, "status is required")
     }
 }
 
-export class NotNullIdProjects extends CustomError{
+export class NotNullIdProject extends CustomError{
     constructor(){
-        super(400, "Favor preencha o campo id do projeto.")
+        super(400, "id_Project is required")
     }
 }
 
-export class NotNullId extends CustomError{
+export class TaskNotFound extends CustomError{
     constructor(){
-        super(400, "Favor informar o id da tarefa que deseja editar.")
+        super(404, "task not found")
     }
 }
-

@@ -1,6 +1,6 @@
 import { TasksDatabase } from "../data/TasksDatabase";
 import { NotNullDescription } from "../error/ProjectError";
-import { InvalidStatus, NotNullDeadline, NotNullId, NotNullIdProjects, NotNullStatus } from "../error/TasksError";
+import { InvalidStatus, NotNullDeadline, NotNullIdProject, NotNullStatus, TaskNotFound } from "../error/TasksError";
 import { Tasks } from "../model/tasks/tasks";
 import { TasksInputDTO } from "../model/tasks/tasksInputDTO";
 import { TasksRole } from "../model/tasks/tasksRole";
@@ -9,7 +9,7 @@ import { generateId } from "../services/idGenerator";
 export class TasksBusiness{
     createTasks = async(input: TasksInputDTO)=>{
         try{
-            const {description, deadline, status, id_projects} = input;
+            const {description, deadline, status, id_project} = input;
 
             if(!deadline){
                 throw new NotNullDeadline()
@@ -17,8 +17,8 @@ export class TasksBusiness{
                 throw new NotNullDescription()
             }else if(!status){
                 throw new NotNullStatus()
-            }else if (!id_projects){
-                throw new NotNullIdProjects()
+            }else if (!id_project){
+                throw new NotNullIdProject()
             }
 
             if(status.toUpperCase() != TasksRole.ANDAMENTO && 
@@ -34,11 +34,13 @@ export class TasksBusiness{
                 description,
                 deadline,
                 status,
-                id_projects
+                id_project
             }
 
             const tasksDatabase = new TasksDatabase()
             await tasksDatabase.createTasks(tasks)
+
+            return tasks
 
         }catch(error:any){
             throw new Error(error.message)
@@ -47,7 +49,7 @@ export class TasksBusiness{
 
     editTasks = async(input: Tasks)=>{
         try{
-            const {description, deadline, status, id_projects, id} = input;
+            const {description, deadline, status, id_project, id} = input;
 
             if(!deadline){
                 throw new NotNullDeadline()
@@ -55,19 +57,13 @@ export class TasksBusiness{
                 throw new NotNullDescription()
             }else if(!status){
                 throw new NotNullStatus()
-            }else if (!id_projects){
-                throw new NotNullIdProjects()
-            }else if(!id){
-                throw new NotNullId()
             }
-
+            
             const edit: Tasks ={
                 id,
                 description,
                 deadline,
-                status,
-                id_projects
-
+                status
             }
 
             const tasksDatabase = new TasksDatabase()

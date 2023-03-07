@@ -5,8 +5,8 @@ const projectController = new ProjectController();
 
 export const projectRouter = express.Router();
 
-projectRouter.post("/create", projectController.creteProject)
+projectRouter.post("", projectController.creteProject)
 projectRouter.get("", projectController.getAllProject)
 projectRouter.get("/:id", projectController.getProject)
-projectRouter.put("/edit/:id", projectController.editProject)
-projectRouter.delete("/delete/:id", projectController.deleteProject)
+projectRouter.put("/:id", projectController.editProject)
+projectRouter.delete("/:id", projectController.deleteProject)

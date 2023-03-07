@@ -1,56 +1,55 @@
-POST http://localhost:3003/project/create
+POST http://localhost:3003/project
 Content-Type: application/json
 
 {
-    "title": "Projeto 3",
-    "description": "testando projeto 3"
+    "name": "Projeto 3",
+    "description": "testando projeto 5"
 }
 
 ###
 GET http://localhost:3003/project
 
 ###
-GET http://localhost:3003/project/0743b551-1e30-44cd-ab31-cd80f7ba7c89
+GET http://localhost:3003/project/2f83c224-e5fa-48a0-9ab8-a354a1b7ee46
 
 ###
-PUT http://localhost:3003/project/edit/0743b551-1e30-44cd-ab31-cd80f7ba7c89
+PUT http://localhost:3003/project/2f83c224-e5fa-48a0-9ab8-a354a1b7ee46
 Content-Type: application/json
 
 {
-    "title": "O novo Projeto 3",
-    "description": "testando projeto 3"
+    "name": "O novo Projeto",
+    "description": "testando projeto"
 }
 
 ###
-DELETE http://localhost:3003/project/delete/0743b551-1e30-44cd-ab31-cd80f7ba7c89
+DELETE http://localhost:3003/project/db465abf-1527-4de9-82a9-914dc0dc0e80
 
 ###
-POST http://localhost:3003/tasks/create
+POST http://localhost:3003/tasks
 Content-Type: application/json
 
 {
-    "description": "Tarefa numero 22",
-    "deadline":"2023-10-11",
-    "status":"teste",
-    "id_projects":"0743b551-1e30-44cd-ab31-cd80f7ba7c89"
+    "description": "Tarefa numero 21",
+    "deadline":"2021-12-01",
+    "status":"CONCLUÍDO",
+    "id_project":"2f83c224-e5fa-48a0-9ab8-a354a1b7ee46"
 }
 
 ###
-GET http://localhost:3003/tasks/0743b551-1e30-44cd-ab31-cd80f7ba7c89
+GET http://localhost:3003/tasks/2f83c224-e5fa-48a0-9ab8-a354a1b7ee46
 
 ###
-PUT http://localhost:3003/tasks/edit/07c0ffa6-2414-4c75-b5b4-d536e7d37774
+PUT http://localhost:3003/tasks/d499faae-1306-49d4-a969-0c7adaeada9
 Content-Type: application/json
 
 {
-    "description": "tarefa numero 01",
-    "deadline":"2023-06-20",
-    "status":"ativo",
-    "id_projects":"0743b551-1e30-44cd-ab31-cd80f7ba7c8"
+    "description": "tarefa 21",
+    "deadline":"2021-11-01",
+    "status":"CONCLUÍDO"
 }
 
 ###
-DELETE http://localhost:3003/tasks/delete/07c0ffa6-2414-4c75-b5b4-d536e7d37774
+DELETE http://localhost:3003/tasks/3840aaf5-bce1-43fb-bf88-5a7c90eb3b7e
 
 
 

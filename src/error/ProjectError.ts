@@ -2,24 +2,18 @@ import { CustomError } from "./CustomError";
 
 export class NotNullDescription extends CustomError{
     constructor(){
-        super(400, "Favor preencha o campo descrição.")
+        super(400, "description is required")
     }
 }
 
-export class NotNullTitle extends CustomError{
+export class NotNullName extends CustomError{
     constructor(){
-        super(400, "Favor preencha o campo titulo.")
-    }
-}
-
-export class NoProjects extends CustomError{
-    constructor(){
-        super(404, "Nenhum projeto foi encontrado.")
+        super(400, "name is required")
     }
 }
 
 export class ProjectNotFound extends CustomError{
     constructor(){
-        super(404, "Projeto não localizado, verifique se o id está correto.")
+        super(404, "project not found")
     }
 }

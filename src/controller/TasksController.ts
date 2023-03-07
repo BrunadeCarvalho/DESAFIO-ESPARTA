@@ -15,9 +15,9 @@ export class TasksController{
             };
 
             const tasksBusiness = new TasksBusiness()
-            await tasksBusiness.createTasks(input)
+            const response = await tasksBusiness.createTasks(input)
 
-            res.status(201).send(input)
+            res.status(201).send(response)
 
         }catch(error:any){
             res.status(400).send(error.message || error.sqlMessage)
@@ -30,8 +30,7 @@ export class TasksController{
                 id: req.params.id,
                 description: req.body.description,
                 deadline: req.body.deadline,
-                status: req.body.status,
-                id_project: req.body.id_project
+                status: req.body.status
             };
 
             const tasksBusiness = new TasksBusiness()
@@ -39,7 +38,8 @@ export class TasksController{
 
             res.status(200).send(input)
         }catch(error:any){
-            res.status(400).send(error.message)
+            console.log(error)
+            res.status(404).send({message: error.message})
         }
     }
 
@@ -48,11 +48,11 @@ export class TasksController{
             const {id}= req.params
 
             const tasksDatabase = new TasksDatabase()
-            const deleteTasks = await tasksDatabase.deleteTasks(id)
+            await tasksDatabase.deleteTasks(id)
 
-            res.status(204).send(deleteTasks)
+            res.status(204).send()
         }catch(error:any){
-            res.status(400).send(error.message)
+            res.status(404).send({message: error.message})
         }
     }
 
@@ -64,9 +64,22 @@ export class TasksController{
             const tasksDatabase = new TasksDatabase()
             const tasks = await tasksDatabase.getTasks(id)
 
-            res.status(200).send(tasks[0])
+            const response = {
+                projectName: tasks[0].name,
+                projectId: id,
+                tasks: []
+            }
+
+            const filtredTasks = tasks.map((task: Tasks) => {
+                delete task.name
+                return task
+            })
+
+            response.tasks = filtredTasks
+
+            res.status(200).send(response)
         }catch(error:any){
-            res.status(400).send(error.message)
+            res.status(404).send({message: error.message})
         }
     }
 }

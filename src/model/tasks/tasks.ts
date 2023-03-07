@@ -3,5 +3,6 @@ export type Tasks={
     description: string,
     deadline: Date,
     status: string,
-    id_project: string
+    id_project?: string,
+    name?: string
 }

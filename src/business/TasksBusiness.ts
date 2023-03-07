@@ -1,6 +1,6 @@
 import { TasksDatabase } from "../data/TasksDatabase";
 import { NotNullDescription } from "../error/ProjectError";
-import { InvalidStatus, NotNullDeadline, NotNullIdProject, NotNullStatus } from "../error/TasksError";
+import { InvalidStatus, NotNullDeadline, NotNullIdProject, NotNullStatus, TaskNotFound } from "../error/TasksError";
 import { Tasks } from "../model/tasks/tasks";
 import { TasksInputDTO } from "../model/tasks/tasksInputDTO";
 import { TasksRole } from "../model/tasks/tasksRole";
@@ -40,6 +40,8 @@ export class TasksBusiness{
             const tasksDatabase = new TasksDatabase()
             await tasksDatabase.createTasks(tasks)
 
+            return tasks
+
         }catch(error:any){
             throw new Error(error.message)
         }
@@ -55,17 +57,13 @@ export class TasksBusiness{
                 throw new NotNullDescription()
             }else if(!status){
                 throw new NotNullStatus()
-            }else if (!id_project){
-                throw new NotNullIdProject()
             }
             
             const edit: Tasks ={
                 id,
                 description,
                 deadline,
-                status,
-                id_project
-
+                status
             }
 
             const tasksDatabase = new TasksDatabase()

@@ -1,5 +1,6 @@
 import { CustomError } from "../error/CustomError";
 import { ProjectNotFound } from "../error/ProjectError";
+import { TaskNotFound } from "../error/TasksError";
 import { Projects } from "../model/projects/projects";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -12,7 +13,6 @@ export class ProjectDatabase extends BaseDatabase{
                 name: project.name,
                 description: project.description
             }).into("Projects")
-
         }catch(error:any){
             throw new Error(error.message)
         }
@@ -52,13 +52,19 @@ export class ProjectDatabase extends BaseDatabase{
 
     editProject = async(project: Projects)=>{
         try{
-            await ProjectDatabase.connection
+            const result = await ProjectDatabase.connection
             .update({
                 name: project.name,
                 description: project.description
             })
             .where({id: project.id})
             .into("Projects");
+
+            if(result == 0){
+                throw new ProjectNotFound()
+            }
+
+            return result
         }catch(error:any){
             throw new Error(error.message)
 
@@ -71,10 +77,11 @@ export class ProjectDatabase extends BaseDatabase{
             .delete()
             .where({id})
 
-            if(queryResult){
-                return "Projeto deletada com sucesso"
+            if(queryResult == 0){
+                throw new ProjectNotFound()
             }
-                return "Projeto não localizada, verifique se o id está correto."
+            return queryResult
+
         }catch(error:any){
             throw new Error(error.message)
         }

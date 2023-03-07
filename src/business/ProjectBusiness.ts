@@ -23,8 +23,11 @@ export class ProjectBusiness{
                 description
             }
 
+
             const projectDatabase = new ProjectDatabase
             await projectDatabase.createProject(project)
+
+            return project
 
         }catch(error:any){
             throw new Error(error.message)
@@ -39,8 +42,6 @@ export class ProjectBusiness{
                 throw new NotNullName()
             }else if(!description){
                 throw new NotNullDescription()
-            }else if(!id){
-                throw new Error("Insira o id")
             }
 
             const edit: Projects ={
@@ -51,6 +52,8 @@ export class ProjectBusiness{
 
             const projectDatabase = new ProjectDatabase()
             await projectDatabase.editProject(edit)
+
+            return edit
 
         }catch(error:any){
             throw new Error(error.message)

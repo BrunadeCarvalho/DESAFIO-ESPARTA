@@ -1,38 +1,36 @@
 import { CustomError } from "./CustomError";
 
-
 export class InvalidStatus extends CustomError{ 
     constructor(){
-        super(400, "Invalid Status")
+        super(400, "invalid Status")
     }
 }
 export class NotNullDeadline extends CustomError{
     constructor(){
-        super(400, "Deadline is required")
+        super(400, "deadline is required")
     }
 }
 
 export class NotNullDescription extends CustomError{
     constructor(){
-        super(400, "Description is required.")
+        super(400, "description is required.")
     }
 }
 
 export class NotNullStatus extends CustomError{
     constructor(){
-        super(400, "Status is required")
+        super(400, "status is required")
     }
 }
 
 export class NotNullIdProject extends CustomError{
     constructor(){
-        super(400, "Id_Project is required")
+        super(400, "id_Project is required")
     }
 }
 
-export class IdNotFound extends CustomError{
+export class TaskNotFound extends CustomError{
     constructor(){
-        super(404, "Task Not Found")
+        super(404, "task not found")
     }
 }
-

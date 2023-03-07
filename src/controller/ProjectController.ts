@@ -71,7 +71,7 @@ export class ProjectController{
             const projectDatabase = new ProjectDatabase()
             const deleteProject = await projectDatabase.deleteProject(id)
 
-            res.status(200).send(deleteProject)
+            res.status(204).send(deleteProject)
         }catch(error:any){
             res.status(400).send(error.message)
         }

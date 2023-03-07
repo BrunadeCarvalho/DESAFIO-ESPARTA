@@ -1,6 +1,6 @@
 import { TasksDatabase } from "../data/TasksDatabase";
 import { NotNullDescription } from "../error/ProjectError";
-import { InvalidStatus, NotNullDeadline, NotNullId, NotNullIdProjects, NotNullStatus } from "../error/TasksError";
+import { InvalidStatus, NotNullDeadline, NotNullIdProject, NotNullStatus } from "../error/TasksError";
 import { Tasks } from "../model/tasks/tasks";
 import { TasksInputDTO } from "../model/tasks/tasksInputDTO";
 import { TasksRole } from "../model/tasks/tasksRole";
@@ -18,7 +18,7 @@ export class TasksBusiness{
             }else if(!status){
                 throw new NotNullStatus()
             }else if (!id_project){
-                throw new NotNullIdProjects()
+                throw new NotNullIdProject()
             }
 
             if(status.toUpperCase() != TasksRole.ANDAMENTO && 
@@ -56,11 +56,9 @@ export class TasksBusiness{
             }else if(!status){
                 throw new NotNullStatus()
             }else if (!id_project){
-                throw new NotNullIdProjects()
-            }else if(!id){
-                throw new NotNullId()
+                throw new NotNullIdProject()
             }
-
+            
             const edit: Tasks ={
                 id,
                 description,

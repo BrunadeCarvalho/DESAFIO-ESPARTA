@@ -15,8 +15,8 @@ export class TasksDatabase extends BaseDatabase{
                 id_project: tasks.id_project
             }).into("Tasks")
 
-        }catch(erro:any){
-            throw new Error(erro.message)
+        }catch(error:any){
+            throw new Error(error.message)
         }
     }
 
@@ -31,8 +31,8 @@ export class TasksDatabase extends BaseDatabase{
             })
             .where({id: tasks.id})
             .into("Tasks");
-        }catch(erro:any){
-            throw new CustomError(400, "Não foi possivel realizar as modificações.")
+        }catch(error:any){
+            throw new Error(error.message)
 
         }
     }
@@ -48,7 +48,7 @@ export class TasksDatabase extends BaseDatabase{
             }
                 return "Tarefa não localizada, verifique se o id está correto."
         }catch(error:any){
-            throw new CustomError(error.status, error.message)
+            throw new Error(error.message)
         }
     }
 
@@ -69,6 +69,7 @@ export class TasksDatabase extends BaseDatabase{
             return queryResult
 
         }catch(error:any){
+            throw new Error(error.message)
 
         }
     }

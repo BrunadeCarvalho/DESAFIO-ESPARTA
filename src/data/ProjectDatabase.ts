@@ -1,5 +1,5 @@
 import { CustomError } from "../error/CustomError";
-import { NoProjects, ProjectNotFound } from "../error/ProjectError";
+import { ProjectNotFound } from "../error/ProjectError";
 import { Projects } from "../model/projects/projects";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -13,8 +13,8 @@ export class ProjectDatabase extends BaseDatabase{
                 description: project.description
             }).into("Projects")
 
-        }catch(erro:any){
-            throw new Error(erro.message)
+        }catch(error:any){
+            throw new Error(error.message)
         }
     }
 
@@ -25,12 +25,12 @@ export class ProjectDatabase extends BaseDatabase{
             .orderBy('name', 'asc')
 
             if(queryResult.length <1){
-                throw new NoProjects()
+                throw new ProjectNotFound()
             }
 
             return queryResult
         }catch(error: any){
-            throw new CustomError(error.statusCode, error.message)
+            throw new Error(error.message)
         }
     }
 
@@ -46,7 +46,7 @@ export class ProjectDatabase extends BaseDatabase{
             return queryResult
 
         }catch(error:any){
-            throw new CustomError(error.statusCode, error.message)
+            throw new Error(error.message)
         }
     }
 
@@ -59,8 +59,8 @@ export class ProjectDatabase extends BaseDatabase{
             })
             .where({id: project.id})
             .into("Projects");
-        }catch(erro:any){
-            throw new CustomError(400, "Não foi possivel realizar as modificações.")
+        }catch(error:any){
+            throw new Error(error.message)
 
         }
     }
@@ -76,7 +76,7 @@ export class ProjectDatabase extends BaseDatabase{
             }
                 return "Projeto não localizada, verifique se o id está correto."
         }catch(error:any){
-            throw new CustomError(error.status, error.message)
+            throw new Error(error.message)
         }
     }
 }

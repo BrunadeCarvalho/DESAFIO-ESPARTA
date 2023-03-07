@@ -37,7 +37,7 @@ export class TasksController{
             const tasksBusiness = new TasksBusiness()
             await tasksBusiness.editTasks(input)
 
-            res.status(201).send({message: "Tarefa editada com sucesso!"})
+            res.status(200).send(input)
         }catch(error:any){
             res.status(400).send(error.message)
         }
@@ -50,7 +50,7 @@ export class TasksController{
             const tasksDatabase = new TasksDatabase()
             const deleteTasks = await tasksDatabase.deleteTasks(id)
 
-            res.status(200).send(deleteTasks)
+            res.status(204).send(deleteTasks)
         }catch(error:any){
             res.status(400).send(error.message)
         }

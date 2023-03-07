@@ -17,7 +17,7 @@ export class TasksDatabase extends BaseDatabase{
 
         }catch(error:any){
             if(error.errno == 1452){
-                throw new TaskNotFound
+                throw new ProjectNotFound
             }
         
             throw new Error(error.message)
@@ -25,22 +25,17 @@ export class TasksDatabase extends BaseDatabase{
     }
 
     editTasks = async(tasks: Tasks)=>{
-        try{
-            const result = await TasksDatabase.connection
-            .update({
-                description: tasks.description,
-                deadline: tasks.deadline,
-                status: tasks.status
-            })
-            .where({id: tasks.id})
-            .into("Tasks");
+        const result = await TasksDatabase.connection
+        .update({
+            description: tasks.description,
+            deadline: tasks.deadline,
+            status: tasks.status
+        })
+        .where({id: tasks.id})
+        .into("Tasks");
 
-            if(result == 0){
-                throw new TaskNotFound()
-            }
-        }catch(error:any){
-            throw new Error(error.message)
-
+        if(result == 0){
+            throw new TaskNotFound()
         }
     }
 
@@ -63,6 +58,14 @@ export class TasksDatabase extends BaseDatabase{
     getTasks = async(id:string)=>{
         try{
 
+            const queryResultProject = await TasksDatabase.connection.raw(
+                `SELECT * from Projects where id = "${id}"`
+            )
+            
+            if(queryResultProject[0].length < 1){
+                throw new ProjectNotFound()
+            }
+
             const queryResult = await TasksDatabase.connection.raw(
                 `SELECT  p.name, t.id, t.description, t.deadline, t.status 
                 from Tasks AS t 
@@ -70,8 +73,8 @@ export class TasksDatabase extends BaseDatabase{
                 WHERE p.id = "${id}"`
             )
 
-            if(queryResult[0].length <1){
-                throw new ProjectNotFound()
+            if(queryResultProject[0] && queryResult[0].length < 1){
+                return queryResultProject[0]
             }
 
             return queryResult[0]

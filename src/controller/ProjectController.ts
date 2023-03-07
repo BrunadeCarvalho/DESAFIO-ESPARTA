@@ -19,7 +19,7 @@ export class ProjectController{
             res.status(201).send(response)
 
         }catch(error:any){
-            res.status(400).send({message: error.message || error.sqlMessage})
+            return res.status(error.statusCode).send({message: error.message})
         }
     }
 
@@ -43,8 +43,7 @@ export class ProjectController{
 
             res.status(200).send(getProject[0])
         }catch(error: any){
-            console.log(error)
-            res.status(404).send({message: error.message})
+            res.status(error.statusCode).send({message: error.message})
         }
     }
 
@@ -59,9 +58,9 @@ export class ProjectController{
             const projectBusiness = new ProjectBusiness()
             const response = await projectBusiness.editProject(input)
 
-            res.status(200).send(response)
+            return res.status(200).send(response)
         }catch(error:any){
-            res.status(404).send({message: error.message})
+            return res.status(error.statusCode).send({message: error.message})
         }
     }
 
@@ -72,9 +71,9 @@ export class ProjectController{
             const projectDatabase = new ProjectDatabase()
             await projectDatabase.deleteProject(id)
 
-            res.status(204).send()
+            return res.status(204).send()
         }catch(error:any){
-            res.status(404).send({message: error.message})
+            return res.status(error.statusCode).send({message: error.message})
         }
     }
 }

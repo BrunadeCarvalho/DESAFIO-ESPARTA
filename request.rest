@@ -44,7 +44,7 @@ Content-Type: application/json
 
 {
     "description": "tarefa 22",
-    "deadline":"2022-10-01",
+    "deadlie":"2022-10-01",
     "status":"CONCLUÍDO"
 }
 

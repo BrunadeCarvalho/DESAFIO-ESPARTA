@@ -25,24 +25,24 @@
 <h2> Endpoints: </h2>
 <ol>
     <li>Projects: </li>
-    <li>
+        <ol>
             <h2>Create new project</h2>
-        </li>
-        <li>
+        </ol>
+        <ol>
             <h2>Get all project</h2>
-        </li>
-        <li>
+        </ol>
+        <ol>
             <h2>Get project</h2>
-        </li>
-        <li>
+        </ol>
+        <ol>
             <h2>Edit project</h2>
-        </li>
-        <li>
+        </ol>
+        <ol>
             <h2>Delete project</h2>
-        </li>
-        <li>
+        </ol>
+        <ol>
             <h2>Delete project</h2>
-        </li>
+        </ol>
     </li>
     <li> Tasks: </li>
         <li>

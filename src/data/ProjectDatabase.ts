@@ -72,18 +72,13 @@ export class ProjectDatabase extends BaseDatabase{
     }
 
     deleteProject = async(id:String)=>{
-        try{
-            const queryResult = await ProjectDatabase.connection("Projects")
-            .delete()
-            .where({id})
+        const queryResult = await ProjectDatabase.connection("Projects")
+        .delete()
+        .where({id})
 
-            if(queryResult == 0){
-                throw new ProjectNotFound()
-            }
-            return queryResult
-
-        }catch(error:any){
-            throw new Error(error.message)
+        if(queryResult == 0){
+            throw new ProjectNotFound()
         }
+        return queryResult
     }
 }

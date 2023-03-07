@@ -1,3 +1,4 @@
+<h2>Iniciando a aplicação: </h2>
 <ol>
     <li>
         <h2> Passos para rodar a aplicação: </h2>
@@ -21,5 +22,43 @@
     </li>
 </ol>
 
-<h2><strong>Deploy:</strong></h2>https://desafio-esparta.onrender.com
+<h2> Endpoints: </h2>
+<ol>
+    <li>Projects: </li>
+    <li>
+            <h2>Create new project</h2>
+        </li>
+        <li>
+            <h2>Get all project</h2>
+        </li>
+        <li>
+            <h2>Get project</h2>
+        </li>
+        <li>
+            <h2>Edit project</h2>
+        </li>
+        <li>
+            <h2>Delete project</h2>
+        </li>
+        <li>
+            <h2>Delete project</h2>
+        </li>
+    </li>
+    <li> Tasks: </li>
+        <li>
+            <h2>Create new task</h2>
+        </li>
+        <li>
+            <h2>Get task from a project</h2>
+        </li>
+        <li>
+            <h2>Edit task</h2>
+        </li>
+        <li>
+            <h2>Delete task</h2>
+        </li>
+    </li>
+
+</ol>
+
 <h2><strong>Documentação:</stromg></h2>

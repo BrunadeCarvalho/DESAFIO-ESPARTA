@@ -28,39 +28,13 @@
         <h2> Projects: </h2>
         <ol>
             <li>Create new project</li>
-        </ol>
-        <ol>
             <li>Get all project</li>
-        </ol>
-        <ol>
             <li>Get project</li>
-        </ol>
-        <ol>
             <li>Edit project</li>
-        </ol>
-        <ol>
             <li>Delete project</li>
-        </ol>
-        <ol>
             <li>Delete project</li>
         </ol>
     </li>
-    
-    <li> Tasks: </li>
-        <li>
-            <h2>Create new task</h2>
-        </li>
-        <li>
-            <h2>Get task from a project</h2>
-        </li>
-        <li>
-            <h2>Edit task</h2>
-        </li>
-        <li>
-            <h2>Delete task</h2>
-        </li>
-    </li>
-
 </ol>
 
 <h2><strong>Documentação:</stromg></h2>

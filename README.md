@@ -106,7 +106,7 @@
 <p><strong>URL:</strong></p> <img src="https://user-images.githubusercontent.com/102433664/223566141-1263959f-8672-44a3-b84b-6092c6900f1e.png" /> 
 </ol>
 
-### Documentação: [Desafio](https://documenter.getpostman.com/view/22350736/2s93JqRQ1N)
+### Workspace no postman: [Desafio](https://documenter.getpostman.com/view/22350736/2s93JqRQ1N)
 
 <h3> Tecnologias utilizadas: </h3>
 <img src="https://skillicons.dev/icons?i=ts,nodejs,mysql,&perline=10" />

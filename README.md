@@ -106,7 +106,18 @@
 <p><strong>URL:</strong></p> <img src="https://user-images.githubusercontent.com/102433664/223566141-1263959f-8672-44a3-b84b-6092c6900f1e.png" /> 
 </ol>
 
+<h2 align="center">📄 Testes unitários: </h2>
+<ol>
+    <li>
+        <h3> Passos para executar os testes: </h3>
+        <ol>
+            <li>npm run test</li>
+        </ol>
+    </li>
+ </ol>
+<h2></h2>
+
 ### Workspace no postman: [Desafio](https://documenter.getpostman.com/view/22350736/2s93JqRQ1N)
 
 <h3> Tecnologias utilizadas: </h3>
-<img src="https://skillicons.dev/icons?i=ts,nodejs,mysql,&perline=10" />
+<img src="https://skillicons.dev/icons?i=ts,nodejs,mysql,jest,&perline=10" />

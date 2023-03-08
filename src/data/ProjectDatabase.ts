@@ -35,19 +35,15 @@ export class ProjectDatabase extends BaseDatabase{
     }
 
     getProject = async(id:string)=>{
-        try{
-            const queryResult = await ProjectDatabase.connection("Projects")
-            .select("*")
-            .where({id})
 
-            if(queryResult.length <1){
-                throw new ProjectNotFound()
-            }
-            return queryResult
+        const queryResult = await ProjectDatabase.connection("Projects")
+        .select("*")
+        .where({id})
 
-        }catch(error:any){
-            throw new Error(error.message)
+        if(queryResult.length <1){
+            throw new ProjectNotFound()
         }
+        return queryResult
     }
 
     editProject = async(project: Projects)=>{
